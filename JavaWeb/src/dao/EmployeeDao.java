@@ -33,7 +33,7 @@ public class EmployeeDao {
 		try{
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 			Connection conn = DriverManager.getConnection(ConnectDatabase.db_Url);
-			PreparedStatement ps = conn.prepareStatement(SqlQuery.SELECT_ALL);
+			PreparedStatement ps = conn.prepareStatement(SqlQuery.Employee.SELECT_ALL);
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()){  
 	      Employee e=new Employee();  
@@ -61,7 +61,7 @@ public class EmployeeDao {
 	public static boolean update(Employee e) throws SQLException,ClassNotFoundException{ 
 		Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
     Connection conn = DriverManager.getConnection(ConnectDatabase.db_Url);
-    PreparedStatement ps=conn.prepareStatement(SqlQuery.UPDATE);  
+    PreparedStatement ps=conn.prepareStatement(SqlQuery.Employee.UPDATE);  
     ps.setString(1,e.getfName());  
     ps.setString(2,e.getlName());  
     ps.setString(3,e.getPhoneNumber());  
@@ -87,7 +87,7 @@ public class EmployeeDao {
 	public static boolean insert(Employee e) throws SQLException,ClassNotFoundException{
 		Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 		Connection conn = DriverManager.getConnection(ConnectDatabase.db_Url);
- 	 	PreparedStatement ps=conn.prepareStatement(SqlQuery.INSERT);
+ 	 	PreparedStatement ps=conn.prepareStatement(SqlQuery.Employee.INSERT);
    	ps.setString(1,e.getfName());  
    	ps.setString(2,e.getlName());  
    	ps.setString(3,e.getPhoneNumber());  
@@ -114,7 +114,7 @@ public class EmployeeDao {
 	public static boolean delete(int id) throws SQLException,ClassNotFoundException {
 		Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 		Connection conn = DriverManager.getConnection(ConnectDatabase.db_Url);
-   	PreparedStatement ps=conn.prepareStatement(SqlQuery.DELETE);
+   	PreparedStatement ps=conn.prepareStatement(SqlQuery.Employee.DELETE);
    	ps.setInt(1,id);
    	try {
    		ps.executeUpdate();
@@ -134,7 +134,7 @@ public class EmployeeDao {
     Employee e=new Employee();  
     Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
     Connection conn = DriverManager.getConnection(ConnectDatabase.db_Url);
-    PreparedStatement ps=conn.prepareStatement(SqlQuery.SELECT_ONE);  
+    PreparedStatement ps=conn.prepareStatement(SqlQuery.Employee.SELECT_ONE);  
     ps.setInt(1,id);  
     ResultSet rs=ps.executeQuery();
     while (rs.next()) {
